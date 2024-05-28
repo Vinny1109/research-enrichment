@@ -7,6 +7,18 @@ import time
 import numpy as np #array-matrices
 np.random.seed(1)
 
+# susunan folder
+# laplacian
+# --> ori
+#       --> p1-nomor1_ori.png
+# --> defect
+#       --> p1-nomor1_defect.png
+# --> mask
+#       --> p1-nomor1_mask.png
+# --> inp
+#       --> p1-nomor1_inp.png
+
+
 # Computes the relative squared error between two arrays.
 # antara gambar asli dengan gambar yg di inpaint
 def compute_rse(var, var_hat):
