@@ -94,14 +94,14 @@ def number_file(path):
 
 def base_path(path):
     # mundur 1 dir, c:\....\laplacian\defect
-    filebilap =  os.path.dirname(path)   
-    print("filebilap:", filebilap) 
+    filebase =  os.path.dirname(path)   
+    print("filebase:", filebase) 
     
     # mundur 1 dir, c:\....\laplacian
-    filebilap = os.path.dirname(filebilap)
-    print("filebilap:", filebilap) 
+    filebase = os.path.dirname(filebase)
+    print("filebase:", filebase) 
 
-    return filebilap
+    return filebase
 
 def process_file(path):
     start_time = time.time()
