@@ -92,6 +92,7 @@ def laplacian_conv_2d(y_true, y, lmbda, gamma, eta, tau, maxiter = 50):
     return x
 
 def number_file(path):
+    # path: c:\user\.....\laplacian\defect\p1-nomor1_defect.png
     # mengambil nama file + type + extension
     filename = os.path.basename(path) 
     print("filename ",filename)
@@ -105,6 +106,7 @@ def number_file(path):
     return filenumber
 
 def base_path(path):
+    # path: c:\user\.....\laplacian\defect\p1-nomor1_defect.png
     # mundur 1 dir, c:\....\laplacian\defect
     filebase =  os.path.dirname(path)   
     print("filebase:", filebase) 
@@ -118,7 +120,9 @@ def base_path(path):
 def process_file(path):
     start_time = time.time()
     img = io.imread(path)
-    
+    print("path: ", path)
+    # path: c:\user\.....\laplacian\defect\p1-nomor1_defect.png
+
     # convert image to grayscale
     if img.shape[2] == 4:
         img = img[:, :, :3]    
@@ -135,7 +139,8 @@ def process_file(path):
     # plt.show()
     filemask = os.path.join(base_path(path), 'mask', number_file(path) + '_mask.png')
     print("filemask:", filemask)
-    
+    # hasil C:\Users......\laplacian\mask\p1-nomor1_mask.png
+
     # supaya bs save
     sparse_img_uint8 = (mask * 255).astype(np.uint8)
     io.imsave(filemask, sparse_img_uint8)
@@ -156,8 +161,11 @@ def process_file(path):
     mat_hat[mat_hat > 1] = 1
     # io.imshow(mat_hat)
     # plt.axis('off')
+    
     fileinp = os.path.join(base_path(path), 'inp', number_file(path) + '_inp.png')
     print("fileinp:", fileinp)
+    # hasil C:\Users......\laplacian\inp\p1-nomor1_inp.png
+
     plt.imsave(fileinp.format(tau), mat_hat, cmap = plt.cm.gray)
     end_time = time.time()
     processing_time_inpaint = end_time - start_time
@@ -170,6 +178,7 @@ def process_file(path):
     ax[0].set_title('Original image')
     fileori = os.path.join(base_path(path), 'ori', number_file(path) + '_ori.png')
     print("fileori:", fileori) 
+    # hasil C:\Users\.......\laplacian\ori\p1-nomor1_ori.png
     ax[0].imshow(io.imread(fileori))
 
     ax[1].set_title('Mask')
